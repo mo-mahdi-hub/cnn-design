@@ -24,6 +24,3 @@ env/
 # OS
 .DS_Store
 Thumbs.db
-
-# Results (will be regenerated)
-results/

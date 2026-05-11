@@ -1,0 +1,16 @@
+
+================================================================================
+                     CNN ARCHITECTURE COMPARISON TABLE
+================================================================================
+Metric                              Architecture 1       Architecture 2      
+--------------------------------------------------------------------------------
+Model name                          Baseline_CNN         Advanced_CNN        
+Total parameters                           153,962             175,658
+Training epochs                                 20                  20
+Final train accuracy (%)                    93.43%              76.16%
+Final val/test accuracy (%)                 68.12%              79.79%
+Best val/test accuracy (%)                  70.57%              79.97%
+Final train loss                            0.1831              0.6879
+Final val/test loss                         1.6429              0.5733
+Training time (seconds)                     237.0s              252.3s
+================================================================================
