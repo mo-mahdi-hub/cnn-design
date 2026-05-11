@@ -1,0 +1,39 @@
+ENGR 422 - Lab Activity 5: Discussion Answers (Cells 10 to 14)
+==============================================================
+
+Cell 10: What changes did you make between Architecture 1 and Architecture 2?
+--------------------------------------------------------------------------------
+Between Architecture 1 (Baseline) and Architecture 2 (Advanced), I made the following meaningful changes:
+1. Increased depth: Went from 2 simple convolutional blocks to 3 deeper blocks.
+2. Increased filters: Expanded the number of filters from (16, 32) to (32, 64, 128) to extract richer features.
+3. Added Batch Normalization: Applied after every convolutional layer to stabilize training and act as an implicit regularizer.
+4. Added Dropout: Applied a dropout rate of 0.25 after convolutional blocks and 0.5 before the final dense layer to heavily penalize overfitting.
+5. Changed Pooling Strategy: Replaced the standard `Flatten` layer with `Global Average Pooling`. This drastically reduced the number of dense parameters needed and provided spatial invariance.
+
+
+Cell 11: Which architecture achieved better accuracy?
+--------------------------------------------------------------------------------
+Architecture 2 (Advanced CNN) achieved significantly better validation/test accuracy. It reached an accuracy of 79.97%, outperforming Architecture 1 (Baseline CNN), which only achieved 70.57%.
+
+
+Cell 12: Which architecture had fewer parameters or lower computational cost?
+--------------------------------------------------------------------------------
+Architecture 1 (Baseline CNN) had fewer parameters (153,962 params) compared to Architecture 2 (175,658 params). Because it is much shallower, Architecture 1 also had a slightly lower computational cost, finishing its 20 training epochs in 237.0 seconds compared to Architecture 2's 252.3 seconds.
+
+
+Cell 13: Did the more complex model always perform better? Explain briefly using your results.
+--------------------------------------------------------------------------------
+On the unseen test data, the more complex model performed much better (79.97% vs 70.57%). However, on the training data, the simpler model actually had a much higher accuracy (93.43% vs 76.16%). 
+
+This shows that Architecture 1 was heavily overfitting the training data—memorizing the training images but failing to generalize. Architecture 2, despite being more complex, used regularization techniques (Dropout and Batch Normalization) that made its training harder (lower train accuracy) but allowed it to generalize much better to new data (higher test accuracy).
+
+
+Cell 14: Show one correct prediction and one weak/wrong prediction, then briefly explain what may have caused the weak result.
+--------------------------------------------------------------------------------
+(Refer to the `predictions_Advanced_CNN.png` image for the exact visual examples)
+
+Correct Prediction: The model successfully predicted classes with highly distinct features and backgrounds, such as airplanes (blue sky backgrounds) or frogs.
+
+Weak/Wrong Prediction: A common weak prediction in this model is misclassifying a 'cat' as a 'dog' (or an 'automobile' as a 'truck').
+
+Explanation: The CIFAR-10 dataset consists of very low-resolution images (32x32 pixels). At this resolution, cats and dogs share very similar macroscopic visual features—they both have four legs, fur, a tail, and are often pictured in similar environments (grass, indoors). Because the resolution is so low, the distinct, fine-grained details (like snout shape or ear shape) are blurred, causing the convolutional filters to occasionally confuse the spatial patterns of the two classes.
